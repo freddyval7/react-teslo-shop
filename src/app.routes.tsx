@@ -42,10 +42,6 @@ export const appRouter = createBrowserRouter([
     element: <AuthLayout />,
     children: [
       {
-        index: true,
-        element: <Navigate to="/auth/login" />,
-      },
-      {
         path: "login",
         element: <LoginPage />,
       },

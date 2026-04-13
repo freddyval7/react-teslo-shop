@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Link } from "react-router";
 
 interface ProductCardProps {
   id: string;
@@ -16,6 +17,8 @@ export const ProductCard = ({
   image,
   category,
 }: ProductCardProps) => {
+  const slug = name.toLowerCase().replaceAll(" ", "-");
+
   return (
     <Card className="group border-0 shadow-none product-card-hover cursor-pointer">
       <CardContent className="p-0">
@@ -38,13 +41,15 @@ export const ProductCard = ({
 
           <div className="flex items-center justify-between">
             <p className="font-semibold text-lg">${price}</p>
-            <Button
-              size="sm"
-              variant="outline"
-              className="opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-primary hover:text-primary-foreground border-primary/20 text-xs px-4 py-2 h-8"
-            >
-              Agregar al carrito
-            </Button>
+            <Link to={`/product/${slug}`}>
+              <Button
+                size="sm"
+                variant="outline"
+                className="opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-primary hover:text-primary-foreground border-primary/20 text-xs px-4 py-2 h-8"
+              >
+                Ver producto
+              </Button>
+            </Link>
           </div>
         </div>
       </CardContent>

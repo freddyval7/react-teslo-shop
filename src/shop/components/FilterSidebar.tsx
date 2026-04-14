@@ -71,7 +71,7 @@ export const FilterSidebar = () => {
               value="any"
               id="priceAny"
               checked={currentPrice === "any"}
-              onChange={() => handlePriceChange("any")}
+              onClick={() => handlePriceChange("any")}
             />
             <Label htmlFor="priceAny" className="text-sm cursor-pointer">
               Cualquier precio
@@ -82,7 +82,7 @@ export const FilterSidebar = () => {
               value="0-50"
               id="price1"
               checked={currentPrice === "0-50"}
-              onChange={() => handlePriceChange("0-50")}
+              onClick={() => handlePriceChange("0-50")}
             />
             <Label htmlFor="price1" className="text-sm cursor-pointer">
               $0 - $50
@@ -93,7 +93,7 @@ export const FilterSidebar = () => {
               value="50-100"
               id="price2"
               checked={currentPrice === "50-100"}
-              onChange={() => handlePriceChange("50-100")}
+              onClick={() => handlePriceChange("50-100")}
             />
             <Label htmlFor="price2" className="text-sm cursor-pointer">
               $50 - $100
@@ -104,7 +104,7 @@ export const FilterSidebar = () => {
               value="100-200"
               id="price3"
               checked={currentPrice === "100-200"}
-              onChange={() => handlePriceChange("100-200")}
+              onClick={() => handlePriceChange("100-200")}
             />
             <Label htmlFor="price3" className="text-sm cursor-pointer">
               $100 - $200
@@ -115,7 +115,7 @@ export const FilterSidebar = () => {
               value="200+"
               id="price4"
               checked={currentPrice === "200+"}
-              onChange={() => handlePriceChange("200+")}
+              onClick={() => handlePriceChange("200+")}
             />
             <Label htmlFor="price4" className="text-sm cursor-pointer">
               $200+

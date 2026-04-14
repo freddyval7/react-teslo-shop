@@ -1,11 +1,15 @@
+import { useParams } from "react-router";
+
 import { CustomPagination } from "@/components/custom/CustomPagination";
-import { products } from "@/mocks/products.mock";
 import { CustomJumbotron } from "@/shop/components/CustomJumbotron";
 import { ProductsGrid } from "@/shop/components/ProductsGrid";
-import { useParams } from "react-router";
+import { useProduct } from "@/shop/hooks/useProduct";
 
 export const GenderPage = () => {
   const { gender } = useParams();
+
+  const { data } = useProduct();
+
   const genderLabel =
     gender === "men" ? "Hombres" : gender === "kid" ? "Niños" : "Mujeres";
 
@@ -15,8 +19,8 @@ export const GenderPage = () => {
         title={`Productos para ${genderLabel}`}
         subTitle="Lorem ipsum dolor sit amet"
       />
-      <ProductsGrid products={products} />
-      <CustomPagination totalPages={6} />
+      <ProductsGrid products={data?.products || []} />
+      <CustomPagination totalPages={data?.pages || 1} />
     </>
   );
 };

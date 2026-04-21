@@ -31,6 +31,7 @@ export const LoginPage = () => {
     const isValid = await login(email, password);
     if (isValid) {
       navigate("/");
+      return;
     }
 
     toast.error("Email o contraseña incorrectos");

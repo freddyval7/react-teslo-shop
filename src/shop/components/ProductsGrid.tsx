@@ -8,7 +8,7 @@ import type { Product } from "@/interfaces/product.interface";
 
 interface Props {
   products: Product[];
-  isLoading: boolean;
+  isLoading?: boolean;
 }
 
 export const ProductsGrid = ({ products, isLoading }: Props) => {

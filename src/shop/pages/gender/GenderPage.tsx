@@ -8,7 +8,7 @@ import { useProduct } from "@/shop/hooks/useProduct";
 export const GenderPage = () => {
   const { gender } = useParams();
 
-  const { data } = useProduct();
+  const { data, isLoading } = useProduct();
 
   const genderLabel =
     gender === "men" ? "Hombres" : gender === "kid" ? "Niños" : "Mujeres";
@@ -19,7 +19,7 @@ export const GenderPage = () => {
         title={`Productos para ${genderLabel}`}
         subTitle="Lorem ipsum dolor sit amet"
       />
-      <ProductsGrid products={data?.products || []} />
+      <ProductsGrid products={data?.products || []} isLoading={isLoading} />
       <CustomPagination totalPages={data?.pages || 1} />
     </>
   );

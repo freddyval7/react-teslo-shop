@@ -4,7 +4,7 @@ import { ProductsGrid } from "../components/ProductsGrid";
 import { useProduct } from "../hooks/useProduct";
 
 export const HomePage = () => {
-  const { data } = useProduct();
+  const { data, isLoading } = useProduct();
 
   return (
     <>
@@ -12,7 +12,7 @@ export const HomePage = () => {
         title="Todos los productos"
         subTitle="Lorem ipsum dolor sit amet"
       />
-      <ProductsGrid products={data?.products || []} />
+      <ProductsGrid products={data?.products || []} isLoading={isLoading} />
       <CustomPagination totalPages={data?.pages || 0} />
     </>
   );

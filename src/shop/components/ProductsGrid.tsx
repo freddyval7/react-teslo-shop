@@ -8,9 +8,10 @@ import type { Product } from "@/interfaces/product.interface";
 
 interface Props {
   products: Product[];
+  isLoading: boolean;
 }
 
-export const ProductsGrid = ({ products }: Props) => {
+export const ProductsGrid = ({ products, isLoading }: Props) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [showFilters, setShowFilters] = useState(false);
 
@@ -90,22 +91,26 @@ export const ProductsGrid = ({ products }: Props) => {
           <div className="flex-1">
             <div
               className={
-                viewMode === "grid"
+                viewMode === "grid" && !isLoading
                   ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
                   : "space-y-4"
               }
             >
-              {products.map((product) => (
-                <ProductCard
-                  key={product.id}
-                  id={product.id}
-                  name={product.title}
-                  price={product.price}
-                  image={product.images[0]}
-                  category={product.gender}
-                  sizes={product.sizes}
-                />
-              ))}
+              {!isLoading &&
+                products.map((product) => (
+                  <ProductCard
+                    key={product.id}
+                    id={product.id}
+                    name={product.title}
+                    price={product.price}
+                    image={product.images[0]}
+                    category={product.gender}
+                    sizes={product.sizes}
+                  />
+                ))}
+              {isLoading && (
+                <div className="h-10 w-10 animate-spin rounded-full border-4 border-primary border-t-transparent mx-auto mt-4"></div>
+              )}
             </div>
           </div>
         </div>

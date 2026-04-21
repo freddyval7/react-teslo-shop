@@ -1,5 +1,7 @@
+import { useProductById } from "@/admin/hooks/useProductById";
 import { ProductImageGallery } from "./components/ProductImageGallery";
 import { ProductInfo, type Product } from "./components/ProductInfo";
+import { Navigate, useParams } from "react-router";
 
 const sampleProduct: Product = {
   id: "1",
@@ -20,22 +22,34 @@ const sampleProduct: Product = {
 };
 
 export const ProductPage = () => {
-  // const { id } = useParams();
+  const { idSlug } = useParams();
 
-  // const [product, setProduct] = useState<Product>(sampleProduct);
+  console.log(idSlug);
+
+  if (!idSlug) <Navigate to="/" />;
+
+  const { data: product, isLoading } = useProductById(idSlug || "");
 
   return (
     <div className="min-h-screen bg-background">
       {/* Product */}
-      <main className="mx-auto max-w-7xl px-6 py-12 lg:py-20">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
-          <ProductImageGallery
-            images={sampleProduct.images}
-            title={sampleProduct.title}
-          />
-          <ProductInfo product={sampleProduct} />
+      {isLoading ? (
+        <div className="flex h-screen w-screen items-center justify-center">
+          <div className="flex flex-col items-center gap-4">
+            <div className="h-10 w-10 animate-spin rounded-full border-4 border-primary border-t-transparent"></div>
+          </div>
         </div>
-      </main>
+      ) : (
+        <main className="mx-auto max-w-7xl px-6 py-12 lg:py-20">
+          <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
+            <ProductImageGallery
+              images={product?.images || []}
+              title={product?.title || ""}
+            />
+            <ProductInfo product={product || sampleProduct} />
+          </div>
+        </main>
+      )}
     </div>
   );
 };

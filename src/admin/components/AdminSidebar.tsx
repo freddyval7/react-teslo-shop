@@ -1,15 +1,4 @@
-import {
-  Home,
-  Users,
-  BarChart3,
-  Settings,
-  FileText,
-  ShoppingCart,
-  Bell,
-  HelpCircle,
-  ChevronLeft,
-  ChevronRight,
-} from "lucide-react";
+import { Home, BarChart3, ChevronLeft, ChevronRight } from "lucide-react";
 import { CustomLogo } from "@/components/custom/CustomLogo";
 import { Link, useLocation } from "react-router";
 import { useAuthStore } from "@/auth/store/auth.store";
@@ -22,12 +11,6 @@ interface SidebarProps {
 const menuItems = [
   { icon: Home, label: "Dashboard", to: "/admin" },
   { icon: BarChart3, label: "Productos", to: "/admin/products" },
-  { icon: Users, label: "Users" },
-  { icon: ShoppingCart, label: "Ordenes" },
-  { icon: FileText, label: "Reportes" },
-  { icon: Bell, label: "Notificaciones" },
-  { icon: Settings, label: "Ajustes" },
-  { icon: HelpCircle, label: "Ayuda" },
 ];
 
 export const AdminSidebar: React.FC<SidebarProps> = ({
